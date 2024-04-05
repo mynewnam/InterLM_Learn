@@ -11,4 +11,4 @@
 
 ## 基础作业：Lagent 工具调用
 
-![alt text](image.png)
+![alt text](pic/2.2.png)
