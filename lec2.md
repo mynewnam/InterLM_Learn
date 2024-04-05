@@ -8,3 +8,7 @@
 ## 基础作业：生成 300 字的小故事
 
 ![alt text](pic/2.1.png)
+
+## 基础作业：Lagent 工具调用
+
+![alt text](image.png)
