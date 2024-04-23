@@ -126,18 +126,18 @@ python3 -m huixiangdou.main --standalone
 下面在在`茴香豆 Web 版`创建自己领域的知识问答助手，上传了一份与操作系统有关的课程文档作为知识库。
 
 回答相关问题：
-![alt text](image.png)
+![alt text](pic/3-4.png)
 
-![alt text](image-1.png)
+![alt text](pic/3-5.png)
 
 与知识库内容相似。
 
 回答不相关问题：
-![alt text](image-2.png)
+![alt text](pic/3-6.png)
 
 部署到微信当中：
-![alt text](image-3.png)
+![alt text](pic/3-7.png)
 （这里为什么是`not a question`）
 
 （重新问了一遍，这次根据文件进行回答）
-![alt text](31dab5ac451a2e38756c7aba3fec965.jpg)
+![alt text](pic/3-8.jpg)
