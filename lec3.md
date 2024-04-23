@@ -66,3 +66,78 @@ git clone https://github.com/internlm/huixiangdou && cd huixiangdou
 git checkout 447c6f7e68a1657fce1c4f7c740ea1700bde0440
 
 ```
+
+修改配置文档：
+```bash
+# sed是一个流编辑器，用于对输入流（文件或管道）进行基本的文本转换。-i选项告诉sed直接修改文件，而不是输出到标准输出。
+
+# 设置词嵌入模型
+sed -i '6s#.*#embedding_model_path = "/root/models/bce-embedding-base_v1"#' /root/huixiangdou/config.ini
+
+# 设置检索的重排模型
+sed -i '7s#.*#reranker_model_path = "/root/models/bce-reranker-base_v1"#' /root/huixiangdou/config.ini
+
+# 设置LLM模型
+sed -i '29s#.*#local_llm_path = "/root/models/internlm2-chat-7b"#' /root/huixiangdou/config.ini
+
+# 通过cat命令检查一下，修改是否正确
+```
+
+建立外挂知识库：
+```bash
+cd /root/huixiangdou && mkdir repodir
+
+# --depth=1 表示只克隆最近的一次提交
+git clone https://github.com/internlm/huixiangdou --depth=1 repodir/huixiangdou
+
+# 创建接受问题和拒绝问题列表
+cd /root/huixiangdou
+mv resource/good_questions.json resource/good_questions_bk.json
+echo '[
+  "prob-1",
+  "......",
+  "prob-N"
+]' > /root/huixiangdou/resource/good_questions.json
+
+# 问答测试，检查拒绝问题列表有没有起作用
+echo '[
+"huixiangdou 是什么？",
+"你好，介绍下自己"
+]' > ./test_queries.json
+
+# 创建向量数据库存储目录
+cd /root/huixiangdou && mkdir workdir 
+
+# 分别向量化知识语料、接受问题和拒绝问题中后保存到 workdir
+# 这里要修改一下最大输出长度的限制
+python3 -m huixiangdou.service.feature_store --sample ./test_queries.json
+```
+
+运行茴香豆助手：
+```bash
+# 填入问题
+sed -i '74s/.*/    queries = ["huixiangdou 是什么？", "茴香豆怎么部署到微信群", "今天天气怎么样？"]/' /root/huixiangdou/huixiangdou/main.py
+
+# 运行茴香豆
+cd /root/huixiangdou/
+python3 -m huixiangdou.main --standalone
+```
+
+下面在在`茴香豆 Web 版`创建自己领域的知识问答助手，上传了一份与操作系统有关的课程文档作为知识库。
+
+回答相关问题：
+![alt text](image.png)
+
+![alt text](image-1.png)
+
+与知识库内容相似。
+
+回答不相关问题：
+![alt text](image-2.png)
+
+部署到微信当中：
+![alt text](image-3.png)
+（这里为什么是`not a question`）
+
+（重新问了一遍，这次根据文件进行回答）
+![alt text](31dab5ac451a2e38756c7aba3fec965.jpg)
