@@ -62,3 +62,7 @@ python run.py
 --num-gpus 1  # 运行模型所需的 GPU 数量
 --debug
 ```
+
+得到结果如下：
+
+![alt text](pic/7-3.png)
