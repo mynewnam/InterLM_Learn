@@ -98,6 +98,10 @@ mim install mmdet==3.3.0
 
 完成并运行工具调用脚本，得到如下结果：
 
+![alt text](pic/6-9.png)
+
+![alt text](pic/6-10.png)
+
 作为智能体的应用：
 
 属于进阶作业，后续完成
