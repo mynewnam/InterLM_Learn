@@ -36,6 +36,10 @@ git clone -b 0.2.4 https://github.com/open-compass/opencompass
 
 cd opencompass
 pip install -e .
+
+# 遇到的一个问题
+# pip install -e . 无法正常安装
+# pip install -r requirements.txt 解决问题
 ```
 
 解压评测数据集：
