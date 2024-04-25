@@ -123,6 +123,12 @@ cd /root/huixiangdou/
 python3 -m huixiangdou.main --standalone
 ```
 
+回答结果：
+
+![alt text](pic/3-9.png)
+
+![alt text](pic/3-10.png)
+
 下面在在`茴香豆 Web 版`创建自己领域的知识问答助手，上传了一份与操作系统有关的课程文档作为知识库。
 
 回答相关问题：
