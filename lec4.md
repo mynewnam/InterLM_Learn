@@ -146,7 +146,11 @@ xtuner train /root/ft/config/internlm2_1_8b_qlora_alpaca_e3_copy.py --work-dir /
 
 768个iter：（训练完毕，没有什么变化了）
 
-![alt text](image.png)
+![alt text](pic/4-16.png)
+
+**微调日志**
+
+![alt text](pic/4-19.png)
 
 模型转换，转换成Huggingface格式：
 
